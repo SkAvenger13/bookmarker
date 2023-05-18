@@ -39,4 +39,5 @@ Category.hasMany(Bookmark);
 module.exports = {
     db,
     Bookmark,
+    Category
 }
