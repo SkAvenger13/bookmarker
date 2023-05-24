@@ -4,9 +4,9 @@ const seed = async () => {
     try {
         await db.sync({force: true});
         const [search, coding, jobs] = await Promise.all([
-            Category.create({name: 'search'}),
-            Category.create({name: 'coding'}),
-            Category.create({name: 'jobs'})
+            Category.create({name: 'Search'}),
+            Category.create({name: 'Coding'}),
+            Category.create({name: 'Jobs'})
         ]);
         await Promise.all([
             Bookmark.create({name: 'Google', url: 'https://www.google.com/', categoryId: search.id}),

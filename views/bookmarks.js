@@ -10,7 +10,6 @@ module.exports = (bookmarks, categories) => {
             <link rel="stylesheet" href="../style.css" />
             <title>Bookmarks</title>
         </head>
-
         <body>
             <header>
                 <h1>Bookmarks</h1>
@@ -20,24 +19,21 @@ module.exports = (bookmarks, categories) => {
                     ${bookmarks.map((bookmark) => 
                     `
                         <li>
-                            <a href="${bookmark.url}">${bookmark.name}</a> - ${bookmark.category.name}
+                            <a href="${bookmark.url}">${bookmark.name}</a> - <a href="/categories/${bookmark.categoryId}">${bookmark.category.name}</a>
                         </li>
                     `
                     ).join("")}
                 </ul>
             </div>
-            <div>
-                <form id="categoryform">
-                </form>
-                <select id="categories" form="categoryform">
-                    <option value="all">all</option>
-                    ${categories.map((category) =>
-                        `
-                            <option value="${category.name}">${category.name}</option>
-                        `
-                    )}
-                </select>
-            </div>
+            <form method='POST' action='/bookmarks'>
+                <label for='bookmarkName'>Bookmark Name</label>
+                <input name='bookmarkName' type='text'>
+                <label for='url'>URL</label>
+                <input name='url' type='text'>
+                <label for='categoryName'>Category Name</label>
+                <input name='categoryName' type='text'>
+                <button>Submit</button>
+            </form>
         </body>
         </html>
     `
